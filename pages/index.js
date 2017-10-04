@@ -1,11 +1,10 @@
 import Page from "../layouts/main";
-import Sampledropdown from "../components/Sampledropdown";
 
-export default () =>
+export default () => (
   <Page>
     <div className="cont">
       <h1>Trckr</h1>
-      <Sampledropdown />
+
       <p>Please choose a link</p>
       <style jsx>{`
         .cont {
@@ -20,4 +19,5 @@ export default () =>
         }
       `}</style>
     </div>
-  </Page>;
+  </Page>
+);

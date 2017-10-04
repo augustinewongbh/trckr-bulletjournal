@@ -1,12 +1,15 @@
 import { combineReducers } from "redux";
-import todos from "./todos";
-import projects from "./projects";
+import todo from "./todo";
+import events from "./events";
+import notes from "./notes";
+
 //import bothstates from "./bothstates";
 
 const combinedReducers = combineReducers({
   //bothstates,
-  todos,
-  projects
+  todo,
+  events,
+  notes
 });
 
 export default combinedReducers;

@@ -6,13 +6,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = require("redux");
 
-var _todos = require("./todos");
+var _todo = require("./todo");
 
-var _todos2 = _interopRequireDefault(_todos);
+var _todo2 = _interopRequireDefault(_todo);
 
-var _projects = require("./projects");
+var _events = require("./events");
 
-var _projects2 = _interopRequireDefault(_projects);
+var _events2 = _interopRequireDefault(_events);
+
+var _notes = require("./notes");
+
+var _notes2 = _interopRequireDefault(_notes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20,8 +24,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var combinedReducers = (0, _redux.combineReducers)({
   //bothstates,
-  todos: _todos2.default,
-  projects: _projects2.default
+  todo: _todo2.default,
+  events: _events2.default,
+  notes: _notes2.default
 });
 
 exports.default = combinedReducers;

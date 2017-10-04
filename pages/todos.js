@@ -1,11 +1,11 @@
 import Page from "../layouts/main";
-import AddTodo from "../components/containers/AddTodo";
-import VisibleTodoList from "../components/containers/VisibleTodoList";
+import AddTodo from "../components/AddTodo";
+import ShowTodos from "../components/ShowTodos";
 
-export default () =>
+export default () => (
   <Page>
     <div>
-      <VisibleTodoList />
+      <ShowTodos />
       <AddTodo />
       <style jsx>{`
         .cont {
@@ -14,4 +14,5 @@ export default () =>
         }
       `}</style>
     </div>
-  </Page>;
+  </Page>
+);
