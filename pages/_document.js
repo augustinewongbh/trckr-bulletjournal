@@ -14,12 +14,13 @@ export default class MyDocument extends Document {
         <Head>
           <link
             rel="stylesheet"
-            href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.css"
+            href="/static/semantic-ui-css/semantic.min.css"
           />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
+          <link rel="stylesheet" href="/static/react-day-picker-style.css" />
         </Head>
         <body>
           <Main />

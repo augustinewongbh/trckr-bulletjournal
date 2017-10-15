@@ -7,18 +7,18 @@ const todo = (state = [], action) => {
           id: action.id,
           text: action.text,
           completed: false, //maybe not nessessary
-          status: "current", //can be ongoing,completed, migrated, scheduled
+          status: "ongoing", //can be ongoing,completed, migrated, scheduled
           date: action.fullDate,
           category: "todo"
         }
       ];
-    case "TOGGLE_TODO":
+    case "TOGGLE_TODO_STATUS":
       return state.map(
         todo =>
           todo.id === action.id
             ? {
                 ...todo,
-                completed: !todo.completed
+                status: action.status
               }
             : todo
       );

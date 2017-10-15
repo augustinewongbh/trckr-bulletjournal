@@ -22,7 +22,6 @@ class AddTodo extends Component {
   handleMainClick = e => {
     //make input active
     const actionToTake = e.target.id;
-    console.log(actionToTake, "at handleMainClick");
     this.setState({
       showInput: true,
       actionToTake
@@ -30,7 +29,6 @@ class AddTodo extends Component {
   };
 
   handleSubmit = () => {
-    console.log(this.state.actionToTake, "at handleSubmit");
     switch (this.state.actionToTake) {
       case "notebutton":
         this.props.addNote(this.state.text);
@@ -70,7 +68,12 @@ class AddTodo extends Component {
           </Form.Field>
           <Grid centered>
             <Grid.Column textAlign="center">
-              <Popup trigger={<Button>Select</Button>} flowing hoverable>
+              <Popup
+                trigger={<Button type="button">Select</Button>}
+                position="bottom center"
+                hoverable
+                flowing
+              >
                 <Grid centered columns={3}>
                   <Grid.Column textAlign="center">
                     <Button id="todobutton" onClick={this.handleMainClick}>

@@ -17,7 +17,7 @@ export default ({ children }) => (
         align-items: center;
 
         width: 414px;
-        height: 768px;
+        min-height: 500px;
         border: 1px solid gray;
         background-color: whitesmoke;
       }

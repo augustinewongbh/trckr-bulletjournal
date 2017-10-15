@@ -1,6 +1,7 @@
+import moment from "moment";
 export const addTodo = text => {
   const a = new Date();
-  let fullDate = `${a.getFullYear()}${a.getMonth()}${a.getDate()}`;
+  let fullDate = moment(a).format("YYMMDD");
   return (dispatch, getState) =>
     dispatch({
       type: "ADD_TODO",
@@ -13,7 +14,7 @@ export const addTodo = text => {
 
 export const addEvent = text => {
   const a = new Date();
-  let fullDate = `${a.getFullYear()}${a.getMonth()}${a.getDate()}`;
+  let fullDate = moment(a).format("YYMMDD");
   return (dispatch, getState) =>
     dispatch({
       type: "ADD_EVENT",
@@ -26,7 +27,7 @@ export const addEvent = text => {
 
 export const addNote = text => {
   const a = new Date();
-  let fullDate = `${a.getFullYear()}${a.getMonth()}${a.getDate()}`;
+  let fullDate = moment(a).format("YYMMDD");
   return (dispatch, getState) =>
     dispatch({
       type: "ADD_NOTE",
@@ -37,4 +38,34 @@ export const addNote = text => {
     });
 };
 
+export const toggleTodoStatus = (id, currentStatus) => {
+  let status = "ongoing";
+  switch (currentStatus) {
+    case "ongoing":
+      status = "completed";
+      break;
+    case "completed":
+      status = "migrated";
+      break;
+    case "migrated":
+      status = "scheduled";
+      break;
+    default:
+      status = "ongoing";
+  }
+  return (dispatch, getState) =>
+    dispatch({
+      type: "TOGGLE_TODO_STATUS",
+      id,
+      status
+    });
+};
+
 //Combined Action
+export const showByDate = date => {
+  return (dispatch, getState) =>
+    dispatch({
+      type: "SHOW_BY_DATE",
+      date
+    });
+};
