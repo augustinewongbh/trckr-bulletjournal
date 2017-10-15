@@ -6,7 +6,6 @@ const todo = (state = [], action) => {
         {
           id: action.id,
           text: action.text,
-          completed: false, //maybe not nessessary
           status: "ongoing", //can be ongoing,completed, migrated, scheduled
           date: action.fullDate,
           category: "todo"

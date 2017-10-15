@@ -2,8 +2,19 @@ import React from "react";
 import Header from "../components/Header";
 import { Provider } from "react-redux";
 import configureStore from "../configureStore";
+import { loadState, saveState } from "../localStorage";
 
-const store = configureStore();
+const initialState = loadState();
+const store = configureStore(initialState);
+
+store.subscribe(() => {
+  const { todo, notes, events } = store.getState();
+  saveState({
+    todo,
+    events,
+    notes
+  });
+});
 
 export default ({ children }) => (
   <div className="maincont">

@@ -1,21 +1,20 @@
 import moment from "moment";
-export const addTodo = text => {
-  const a = new Date();
-  let fullDate = moment(a).format("YYMMDD");
-  return (dispatch, getState) =>
+export const addTodo = (text, fullDate = moment().format("YYMMDD")) => {
+  return (dispatch, getState) => {
+    const { date } = getState();
     dispatch({
       type: "ADD_TODO",
       id: Date.now(),
-      category: "todo", //do i need this? probably not
+      category: "todo",
       fullDate,
       text
     });
+  };
 };
 
-export const addEvent = text => {
-  const a = new Date();
-  let fullDate = moment(a).format("YYMMDD");
-  return (dispatch, getState) =>
+export const addEvent = (text, fullDate = moment().format("YYMMDD")) => {
+  return (dispatch, getState) => {
+    const { date } = getState();
     dispatch({
       type: "ADD_EVENT",
       id: Date.now(),
@@ -23,12 +22,12 @@ export const addEvent = text => {
       fullDate,
       text
     });
+  };
 };
 
-export const addNote = text => {
-  const a = new Date();
-  let fullDate = moment(a).format("YYMMDD");
-  return (dispatch, getState) =>
+export const addNote = (text, fullDate = moment().format("YYMMDD")) => {
+  return (dispatch, getState) => {
+    const { date } = getState();
     dispatch({
       type: "ADD_NOTE",
       id: Date.now(),
@@ -36,6 +35,7 @@ export const addNote = text => {
       fullDate,
       text
     });
+  };
 };
 
 export const toggleTodoStatus = (id, currentStatus) => {

@@ -47,7 +47,8 @@ class DateCont extends Component {
         open={this.state.isOpen}
         flowing
         position="bottom center"
-        on="click"
+        on={["click"]}
+        onClose={() => this.setState({ isOpen: false })}
       >
         <DayPicker
           onDayClick={this.handleDayClick}

@@ -21,6 +21,7 @@ class AddTodo extends Component {
 
   handleMainClick = e => {
     //make input active
+
     const actionToTake = e.target.id;
     this.setState({
       showInput: true,
@@ -29,15 +30,16 @@ class AddTodo extends Component {
   };
 
   handleSubmit = () => {
+    const { date } = this.props;
     switch (this.state.actionToTake) {
       case "notebutton":
-        this.props.addNote(this.state.text);
+        this.props.addNote(this.state.text, date);
         break;
       case "todobutton":
-        this.props.addTodo(this.state.text);
+        this.props.addTodo(this.state.text, date);
         break;
       case "eventbutton":
-        this.props.addEvent(this.state.text);
+        this.props.addEvent(this.state.text, date);
         break;
 
       default:
@@ -102,15 +104,15 @@ class AddTodo extends Component {
 
 const mapStateToProps = state => {
   return {
-    all: state
+    date: state.date
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    addNote: text => dispatch(addNote(text)),
-    addTodo: text => dispatch(addTodo(text)),
-    addEvent: text => dispatch(addEvent(text))
+    addNote: (text, date) => dispatch(addNote(text, date)),
+    addTodo: (text, date) => dispatch(addTodo(text, date)),
+    addEvent: (text, date) => dispatch(addEvent(text, date))
   };
 };
 
