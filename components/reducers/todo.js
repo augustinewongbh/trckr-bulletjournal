@@ -22,6 +22,28 @@ const todo = (state = [], action) => {
             : todo
       );
 
+    case "ENDOFDAY_ACTION":
+      return state.map(todo => {
+        if ((todo.date === action.date) & (todo.status === "migrated")) {
+          return {
+            ...todo,
+            status: "ongoing",
+            date: action.nextDay
+          };
+        } else if (
+          (todo.date === action.date) &
+          (todo.status === "scheduled")
+        ) {
+          return {
+            ...todo,
+            status: "ongoing",
+            date: action.nextMonth
+          };
+        } else {
+          return todo;
+        }
+      });
+
     case "DELETE_TODO":
       let removeId = state.map(todo => todo.id).indexOf(action.id);
       return [...state.slice(0, removeId), ...state.slice(removeId + 1)];

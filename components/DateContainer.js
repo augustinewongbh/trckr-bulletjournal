@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
 import DayPicker from "react-day-picker";
-import { Popup, Button } from "semantic-ui-react";
+import { Popup, Button, Icon } from "semantic-ui-react";
 import { showByDate } from "./actions/bulletjournalactions";
 class CurrentDate extends Component {
   render = () => (
@@ -26,11 +26,31 @@ class DateCont extends Component {
       isOpen: false
     });
   };
+  nextDayClick = () => {
+    let selectedDay = this.state.selectedDay;
+    let updatedDay = moment(selectedDay).add(1, "days");
+    this.props.showByDate(updatedDay.format("YYMMDD"));
+    this.setState({ selectedDay: updatedDay });
+  };
+  previousDayClick = () => {
+    let selectedDay = this.state.selectedDay;
+    let updatedDay = moment(selectedDay).subtract(1, "days");
+    this.props.showByDate(updatedDay.format("YYMMDD"));
+    this.setState({ selectedDay: updatedDay });
+  };
   toggleOpen = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
   render = () => (
-    <div style={{ textAlign: "center" }}>
+    <div className="dateCont">
+      <div>
+        <Button
+          circular
+          icon="chevron left"
+          style={{ background: "transparent" }}
+          onClick={this.previousDayClick}
+        />
+      </div>
       <Popup
         trigger={
           <div onClick={this.toggleOpen}>
@@ -55,15 +75,31 @@ class DateCont extends Component {
           selectedDays={this.state.selectedDay}
         />
       </Popup>
+      <div>
+        <Button
+          circular
+          icon="chevron right"
+          style={{ background: "transparent" }}
+          onClick={this.nextDayClick}
+        />
+      </div>
+      <style jsx>{`
+        .dateCont {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          text-align: center;
+          justify-content: space-between;
+        }
+      `}</style>
     </div>
   );
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    showByDate: date => dispatch(showByDate(date)),
-    toggleTodoStatus: (id, currentStatus) =>
-      dispatch(toggleTodoStatus(id, currentStatus))
+    showByDate: date => dispatch(showByDate(date))
   };
 };
 

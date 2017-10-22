@@ -1,6 +1,8 @@
+import React from "react";
+import { Icon } from "semantic-ui-react";
 import Link from "next/link";
 
-const Header = props =>
+const Header = props => (
   <header className="headerCont">
     <div>
       <ul>
@@ -21,14 +23,21 @@ const Header = props =>
         </li>
       </ul>
     </div>
+    <div className="iconCont">
+      <Link href="/settings">
+        <Icon name="setting" size="large" />
+      </Link>
+    </div>
     <style jsx>{`
       .headerCont {
         width: 100%;
         display: flex;
         flex-direction: row;
+        align-items: center;
         justify-content: center;
       }
       ul {
+        padding: 0;
         list-style: none;
         cursor: pointer;
         display: flex;
@@ -38,6 +47,13 @@ const Header = props =>
         margin: 5px;
         padding: 2px;
       }
+      .iconCont {
+        position: relative;
+        right: -22%;
+        top: -35px;
+        align-self: flex-end;
+      }
     `}</style>
-  </header>;
+  </header>
+);
 export default Header;

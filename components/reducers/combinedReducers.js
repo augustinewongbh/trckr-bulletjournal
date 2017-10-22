@@ -3,7 +3,7 @@ import todo from "./todo";
 import events from "./events";
 import notes from "./notes";
 import date from "./date";
-
+import time from "./time";
 //import bothstates from "./bothstates";
 
 const combinedReducers = combineReducers({
@@ -11,6 +11,7 @@ const combinedReducers = combineReducers({
   todo,
   events,
   notes,
+  time,
   date
 });
 
